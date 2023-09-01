@@ -1,0 +1,25 @@
+name: CI/CD
+
+# Controls when the action will run
+on:
+  # Triggers the workflow on push to the main branch
+  push:
+    branches: [ main ]
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+  AWS_DEFAULT_REGION: 'eu-central-1'
+
+# The following job runs all the steps necessary to ship the website into production
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Deploy to AWS S3 Bucket
+      run: aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "*.html" --include "logo.svg" --delete --cache-control max-age=604800
+
+    - name: Create AWS Cloudfront Invalidation
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
