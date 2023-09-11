@@ -46,7 +46,7 @@
                         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                     </div>
                 </div>
-                <div class="py-12 sm:py-16">
+                <div class="pt-12 sm:pt-16">
                     <div class="mx-auto max-w-7xl px-6 lg:px-8">
                         <div class="mx-auto max-w-2xl text-center">
                             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">Convert Romaji to Kana</h1>
@@ -54,7 +54,7 @@
                                 make Kana out of it." - Konfuzius, for sure</span><br class="hidden sm:block">
                                 Turn your Romaji into Kana, and vice versa. Quick and easy!</p>
                         </div>
-                        <div class="mt-12 sm:mt-16 md:flex md:items-start md:justify-center md:gap-x-6">
+                        <div class="my-12 sm:my-16 md:flex md:items-start md:justify-center md:gap-x-6">
                             <div class="flex flex-col flex-1 my-4 md:my-0">
                                 <div class="relative">
                                     <textarea
@@ -106,7 +106,7 @@
             </div>
 
             <!-- Dedication -->
-            <div class="mx-auto md:my-4">
+            <div class="mx-auto">
                 <div class="flex justify-center">
                     <p class="rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20">
                       Dedicated to Runako-sensei
@@ -117,19 +117,21 @@
         </main>
 
         <!-- Footer -->
-        <div class="mx-auto mt-12 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
-            <footer class="border-t border-gray-900/10 py-12 sm:mt-12">
-                <div class="sm:grid sm:grid-cols-3 sm:gap-8">
-                    <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
-                    <div class="grid gap-4 sm:gap-8 mt-4 sm:grid-cols-2 sm:col-span-2 sm:mt-0">
-                        <div class="grid grid-cols-2 gap-8">
-                            <a href="#" class="sm:text-sm text-right sm:text-left font-semibold leading-6 text-gray-600 hover:text-gray-900">About</a>
-                            <a href="#" class="sm:text-sm font-semibold leading-6 text-gray-600 hover:text-gray-900">Contact</a>
-                        </div>
-                        <div class="grid grid-cols-2 gap-8">
-                            <a href="#" class="sm:text-sm text-right sm:text-left font-semibold leading-6 text-gray-600 hover:text-gray-900">Legal</a>
-                            <a href="#" class="sm:text-sm font-semibold leading-6 text-gray-600 hover:text-gray-900">Project</a>
-                        </div>
+        <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
+            <footer class="border-t border-gray-900/10 py-12">
+                <div class="sm:grid sm:grid-cols-3">
+                    <a href="#">
+                        <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
+                    </a>
+                    <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
+                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
+                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
+                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Legal</a>
+                        <a href="#" class="flex -mr-8">
+                            <span class="inline-block sm:text-sm leading-6 text-gray-600 hover:text-gray-900">API</span>
+                            <!-- on changing or removing this badge, remember changing or removing the "-mr-8" on the parent, too -->
+                            <span class="inline-block relative bottom-4 text-xs px-2 py-1 ml-2 bg-pink-200 text-pink-800 rounded-full">coming soon</span>
+                        </a>
                     </div>
                 </div>
             </footer>
