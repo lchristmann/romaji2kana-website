@@ -7,17 +7,16 @@
     <meta name="google" content="notranslate">
 
     <title>Romaji to Kana Converter</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/output.css">
 </head>
 
 <body class="min-h-screen">
     <div class="bg-white min-h-screen">
         <!-- Header -->
         <header class="absolute inset-x-0 top-0 z-50">
-            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <nav class="flex items-center justify-between p-6 lg:px-8">
                 <div class="flex flex-1">
                     <a href="#" class="-m-1.5 p-1.5">
                         <img class="h-8 w-auto" src="logo.svg" alt="Romaji2Kana Logo">
@@ -27,10 +26,11 @@
                     <div class="flex items-center justify-center gap-4">
                         <a href="#" class="leading-6 text-gray-600 hover:text-gray-900"><span class="md:hidden">Standard:</span><span class="hidden md:inline-block">Conversion Standard:</span></a>
                         <select id="conversion-standard" name="conversion-standard" class="text-center rounded-full bg-transparent border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 appearance-none">
+                            <option>Hepburn</option>
                             <option>Revised Hepburn</option>
-                            <option selected>Hepburn</option>
+                            <option selected>Kunrei-shiki</option>
                             <option>Nihon-shiki</option>
-                            <option>Kunrei-shiki</option>
+                            <option>JSL</option>
                         </select>
                     </div>
                 </div>
@@ -40,8 +40,7 @@
         <main class="isolate">
             <!-- Translation section -->
             <div class="relative pt-14">
-                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                    aria-hidden="true">
+                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
                     <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                     </div>
@@ -97,8 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                    aria-hidden="true">
+                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
                     <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
                         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                     </div>

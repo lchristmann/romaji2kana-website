@@ -3,6 +3,9 @@
 ## Table of Contents <!-- omit in toc -->
 
 - [1. Installations \& Build](#1-installations--build)
+  - [1.1. Installation](#11-installation)
+  - [1.2. Development (Continuous) Build](#12-development-continuous-build)
+  - [1.3. Production Build](#13-production-build)
 - [2. Cloud Infrastructure](#2-cloud-infrastructure)
 - [3. Deployment (CI/CD Pipeline)](#3-deployment-cicd-pipeline)
 
@@ -10,31 +13,34 @@
 
 ## 1. Installations & Build
 
-<!-- TBD
+<br>
+
+[Tailwind CSS](https://tailwindcss.com/) is installed via the [standalone executable](https://tailwindcss.com/blog/standalone-cli), which is the recommended way of doing it for projects that aren't using Node.js and npm already and don't want to require it.
+
+### 1.1. Installation
+
+> As described in the previously linked blog article
+
+1. Download the latest executable for you platform - in my case the `tailwindcss-windows-x64.exe`
+2. Rename the file to `tailwindcss.exe` for easier usage
+3. Make it executable: right click it > Properties > Security > Permissions for System > Edit > Full Access > Apply
+4. Create the tailwind.config.js file: `.\tailwindcss.exe init`
+   - add the project files that use Tailwind CSS classes to the `content` array in this file
 
 <br>
 
-### 1.1. Requirements
+### 1.2. Development (Continuous) Build
 
-| Program | Min. Version | Check if installed |
-|---|---|---|
-| Ruby | Version 2.5.0 or higher | `ruby -v` |
-| RubyGems | - | `gem -v` |
-| GCC | - | `gcc -v` and `g++ -v` |
-| Make | - | `make -v` |
-| Bundler | - | `bundle -v` |
+Start a watcher, i.e. a process that watches the files specified in the `content` array from the `tailwind.config.js`: `.\tailwindcss.exe -i css/input.css -o css/output.css --watch`
+
+- When something changes (and you press "save"!) it automatically recompiles the CSS into the `css/output.css` stylesheet, which is included in the HTML pages.
+- It looks at the Tailwind directives in `css/input.css` to determine which utility classes' existence to even consider and check for.
 
 <br>
 
-### 1.2. Build
+### 1.3. Production Build
 
-To install the project's dependencies: run `bundle install` in the root directory of this project.
-
-To have the website up and running locally on port 4000: execute `bundle exec jekyll serve` or just `jekyll serve`.
-
-To remove the generated files: `jekyll clean` and delete the `Gemfile.lock` file.
-
--->
+Compile and minify the CSS for production: `.\tailwindcss.exe -i css/input.css -o css/output.css --minify`
 
 <br>
 
@@ -42,7 +48,7 @@ To remove the generated files: `jekyll clean` and delete the `Gemfile.lock` file
 
 The following diagram shows the cloud infrastructure the site is running on.
 
-![Cloud Architecture Diagram](cloud-architecture.drawio.svg)
+![Cloud Architecture Diagram](docs/cloud-architecture.drawio.svg)
 
 1. Incoming requests to the domain `romaji2kana.com` first arrive at **Route53**, because it has the authoritative name servers responsible for my domain. Here will be the value of the "DNS A record" returned, which is `d15f3h5j74nmwf.cloudfront.net`.
 2. This value is the endpoint of my **CloudFront** distribution (a content delivery network). It serves cached copies of my static website's files, which I have put in an S3 bucket.
@@ -63,7 +69,7 @@ Explanation of the different regions:
 
 A GitHub Actions CI/CD pipeline synchronizes all `.html` files and the `logo.svg` file to the S3 bucket.
 
-![CI/CD Pipeline](cicd-pipeline.drawio.svg)
+![CI/CD Pipeline](docs/cicd-pipeline.drawio.svg)
 
 This pipeline will be triggered by every commit in the Git repository.
 
