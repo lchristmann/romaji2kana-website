@@ -10,6 +10,8 @@
     
     <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/output.css">
+
+    <script src="https://unpkg.com/wanakana"></script>
 </head>
 
 <body class="min-h-screen">
@@ -24,14 +26,13 @@
                 </div>
                 <div class="flex flex-1 justify-end">
                     <div class="flex items-center justify-center gap-4">
-                        <a href="#" class="leading-6 text-gray-600 hover:text-gray-900"><span class="md:hidden">Standard:</span><span class="hidden md:inline-block">Conversion Standard:</span></a>
-                        <select id="conversion-standard" name="conversion-standard" class="text-center rounded-full bg-transparent border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 appearance-none">
-                            <option>Hepburn</option>
-                            <option>Revised Hepburn</option>
-                            <option selected>Kunrei-shiki</option>
-                            <option>Nihon-shiki</option>
-                            <option>JSL</option>
-                        </select>
+                        <a href="https://en.wikipedia.org/wiki/Kunrei-shiki_romanization" target="_blank"
+                            class="leading-6 text-gray-600 hover:text-gray-900">
+                            <span class="md:hidden">Standard: </span>
+                            <span class="hidden md:inline-block">Conversion Standard:</span>
+                            <span class="md:hidden">Kunrei</span>
+                            <span class="hidden md:inline-block text-center rounded-full bg-transparent border-0 py-1.5 px-3 ml-2 text-gray-900 ring-1 ring-inset ring-gray-300">Kunrei-shiki</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -58,7 +59,7 @@
                                 <div class="relative">
                                     <textarea
                                         class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        placeholder=" "></textarea>
+                                        id="romaji-input" placeholder=" "></textarea>
                                     <label
                                         class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                         Romaji
@@ -71,7 +72,7 @@
                                 <div class="relative">
                                     <textarea
                                         class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        placeholder=" "></textarea>
+                                        id="hiragana-input" placeholder=" "></textarea>
                                     <label
                                         class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                         Hiragana
@@ -84,7 +85,7 @@
                                 <div class="relative">
                                     <textarea
                                         class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        placeholder=" "></textarea>
+                                        id="katakana-input" placeholder=" "></textarea>
                                     <label
                                         class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                         Katakana
@@ -135,6 +136,28 @@
             </footer>
         </div>
     </div>
+
+    <!-- Translation functionality -->
+    <script>
+        const romajiInput = document.getElementById('romaji-input');
+        const hiraganaInput = document.getElementById('hiragana-input');
+        const katakanaInput = document.getElementById('katakana-input');
+
+        romajiInput.addEventListener('keyup', () => {
+            hiraganaInput.value = wanakana.toHiragana(romajiInput.value);
+            katakanaInput.value = wanakana.toKatakana(romajiInput.value);
+        });
+
+        hiraganaInput.addEventListener('keyup', () => {
+            romajiInput.value = wanakana.toRomaji(hiraganaInput.value);
+            katakanaInput.value = wanakana.toKatakana(hiraganaInput.value);
+        });
+
+        katakanaInput.addEventListener('keyup', () => {
+            romajiInput.value = wanakana.toRomaji(katakanaInput.value);
+            hiraganaInput.value = wanakana.toHiragana(katakanaInput.value);
+        });
+    </script>
 </body>
 
 </html>

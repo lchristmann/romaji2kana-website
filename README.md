@@ -6,8 +6,9 @@
   - [1.1. Installation](#11-installation)
   - [1.2. Development (Continuous) Build](#12-development-continuous-build)
   - [1.3. Production Build](#13-production-build)
-- [2. Cloud Infrastructure](#2-cloud-infrastructure)
-- [3. Deployment (CI/CD Pipeline)](#3-deployment-cicd-pipeline)
+- [2. Dependencies](#2-dependencies)
+- [3. Cloud Infrastructure](#3-cloud-infrastructure)
+- [4. Deployment (CI/CD Pipeline)](#4-deployment-cicd-pipeline)
 
 <br>
 
@@ -44,7 +45,14 @@ Compile and minify the CSS for production: `.\tailwindcss.exe -i css/input.css -
 
 <br>
 
-## 2. Cloud Infrastructure
+## 2. Dependencies
+
+- [WanaKana](https://github.com/WaniKani/WanaKana): a JavaScript library for detecting and transliterating Hiragana, Katakana and Romaji in all directions
+  - it is Kunrei-shiki moidified a little bit, [for example ぢゃ -> dya instead of zya, to avoid name clashing](https://github.com/WaniKani/WanaKana/blob/master/src/utils/romajiToKanaMap.js)
+
+<br>
+
+## 3. Cloud Infrastructure
 
 The following diagram shows the cloud infrastructure the site is running on.
 
@@ -65,7 +73,7 @@ Explanation of the different regions:
 
 <br>
 
-## 3. Deployment (CI/CD Pipeline)
+## 4. Deployment (CI/CD Pipeline)
 
 A GitHub Actions CI/CD pipeline synchronizes all `.html` files and the `logo.svg` file to the S3 bucket.
 
