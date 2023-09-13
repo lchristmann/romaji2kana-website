@@ -14,127 +14,126 @@
     <script src="https://unpkg.com/wanakana"></script>
 </head>
 
-<body class="min-h-screen">
-    <div class="bg-white min-h-screen">
-        <!-- Header -->
-        <header class="absolute inset-x-0 top-0 z-50">
-            <nav class="flex items-center justify-between p-6 lg:px-8">
-                <div class="flex flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <img class="h-8 w-auto" src="logo.svg" alt="Romaji2Kana Logo">
+<body class="min-h-screen bg-white">
+    
+    <!-- Header -->
+    <header class="absolute inset-x-0 top-0 z-50">
+        <nav class="flex items-center justify-between p-6 lg:px-8">
+            <div class="flex flex-1">
+                <a href="." class="-m-1.5 p-1.5">
+                    <img class="h-8 w-auto" src="logo.svg" alt="Romaji2Kana Logo">
+                </a>
+            </div>
+            <div class="flex flex-1 justify-end">
+                <div class="flex items-center justify-center gap-4">
+                    <a href="https://en.wikipedia.org/wiki/Kunrei-shiki_romanization" target="_blank"
+                        class="leading-6 text-gray-600 hover:text-gray-900">
+                        <span class="md:hidden">Standard: </span>
+                        <span class="hidden md:inline-block">Conversion Standard:</span>
+                        <span class="md:hidden">Kunrei</span>
+                        <span class="hidden md:inline-block">Kunrei (modified)</span>
                     </a>
                 </div>
-                <div class="flex flex-1 justify-end">
-                    <div class="flex items-center justify-center gap-4">
-                        <a href="https://en.wikipedia.org/wiki/Kunrei-shiki_romanization" target="_blank"
-                            class="leading-6 text-gray-600 hover:text-gray-900">
-                            <span class="md:hidden">Standard: </span>
-                            <span class="hidden md:inline-block">Conversion Standard:</span>
-                            <span class="md:hidden">Kunrei</span>
-                            <span class="hidden md:inline-block text-center rounded-full bg-transparent border-0 py-1.5 px-3 ml-2 text-gray-900 ring-1 ring-inset ring-gray-300">Kunrei-shiki</span>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
+    </header>
 
-        <main class="isolate">
-            <!-- Translation section -->
-            <div class="relative pt-14">
-                <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-                    <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                    </div>
+    <main class="isolate">
+        <!-- Translation section -->
+        <div class="relative pt-14">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                 </div>
-                <div class="pt-12 sm:pt-16">
-                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                        <div class="mx-auto max-w-2xl text-center">
-                            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">Convert Romaji to Kana</h1>
-                            <p class="mt-6 text-lg leading-8 text-gray-600"><span class="hidden sm:inline-block">"When life gives you Romaji,
-                                make Kana out of it." - Konfuzius, for sure</span><br class="hidden sm:block">
-                                Turn your Romaji into Kana, and vice versa. Quick and easy!</p>
-                        </div>
-                        <div class="my-12 sm:my-16 md:flex md:items-start md:justify-center md:gap-x-6">
-                            <div class="flex flex-col flex-1 my-4 md:my-0">
-                                <div class="relative">
-                                    <textarea
-                                        class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        id="romaji-input" placeholder=" "></textarea>
-                                    <label
-                                        class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                        Romaji
-                                    </label>
-                                </div>
-                                <p class="hidden md:block text-md leading-8 text-gray-600 mt-2"><a href="#" class="font-semibold hover:text-gray-900">Romaji</a> is Japanese characters
-                                    written in Latin letters that can easily be typed using a regular keyboard.</p>
-                            </div>
-                            <div class="flex flex-col flex-1 my-4 md:my-0">
-                                <div class="relative">
-                                    <textarea
-                                        class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        id="hiragana-input" placeholder=" "></textarea>
-                                    <label
-                                        class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                        Hiragana
-                                    </label>
-                                </div>
-                                <p class="hidden md:block text-md leading-8 text-gray-600  mt-2"><a href="#" class="font-semibold hover:text-gray-900">Hiragana</a> is primarily used
-                                    for native Japanese words, grammatical elements, verb conjugations and particles.</p>
-                            </div>
-                            <div class="flex flex-col flex-1 my-4 md:my-0">
-                                <div class="relative">
-                                    <textarea
-                                        class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
-                                        id="katakana-input" placeholder=" "></textarea>
-                                    <label
-                                        class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                                        Katakana
-                                    </label>
-                                </div>
-                                <p class="hidden md:block text-md leading-8 text-gray-600 mt-2"><a href="#" class="font-semibold hover:text-gray-900">Katakana</a> is primarily used
-                                    for foreign loanwords, onomatopoeia, technical terms, and scientific names.</p>
-                            </div>
-                        </div>
+            </div>
+            <div class="pt-12 sm:pt-16">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl text-center">
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">Convert Romaji to Kana</h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-600"><span class="hidden sm:inline-block">"When life gives you Romaji,
+                            make Kana out of it." - Konfuzius, for sure</span><br class="hidden sm:block">
+                            Turn your Romaji into Kana, and vice versa. Quick and easy!</p>
                     </div>
-                </div>
-                <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-                    <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                    <div class="my-12 sm:my-16 md:flex md:items-start md:justify-center md:gap-x-6">
+                        <div class="flex flex-col flex-1 my-4 md:my-0">
+                            <div class="relative">
+                                <textarea
+                                    class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
+                                    id="romaji-input" placeholder=" "></textarea>
+                                <label
+                                    class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                    Romaji
+                                </label>
+                            </div>
+                            <p class="hidden md:block text-md leading-8 text-gray-600 mt-2"><a href="#" class="font-semibold hover:text-gray-900">Romaji</a> is Japanese characters
+                                written in Latin letters that can easily be typed using a regular keyboard.</p>
+                        </div>
+                        <div class="flex flex-col flex-1 my-4 md:my-0">
+                            <div class="relative">
+                                <textarea
+                                    class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
+                                    id="hiragana-input" placeholder=" "></textarea>
+                                <label
+                                    class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                    Hiragana
+                                </label>
+                            </div>
+                            <p class="hidden md:block text-md leading-8 text-gray-600  mt-2"><a href="#" class="font-semibold hover:text-gray-900">Hiragana</a> is primarily used
+                                for native Japanese words, grammatical elements, verb conjugations and particles.</p>
+                        </div>
+                        <div class="flex flex-col flex-1 my-4 md:my-0">
+                            <div class="relative">
+                                <textarea
+                                    class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
+                                    id="katakana-input" placeholder=" "></textarea>
+                                <label
+                                    class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                    Katakana
+                                </label>
+                            </div>
+                            <p class="hidden md:block text-md leading-8 text-gray-600 mt-2"><a href="#" class="font-semibold hover:text-gray-900">Katakana</a> is primarily used
+                                for foreign loanwords, onomatopoeia, technical terms, and scientific names.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Dedication -->
-            <div class="mx-auto">
-                <div class="flex justify-center">
-                    <p class="rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20">
-                      Dedicated to Runako-sensei
-                    </p>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                 </div>
             </div>
-
-        </main>
-
-        <!-- Footer -->
-        <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
-            <footer class="border-t border-gray-900/10 py-12">
-                <div class="sm:grid sm:grid-cols-3">
-                    <a href="#">
-                        <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
-                    </a>
-                    <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
-                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
-                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
-                        <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Legal</a>
-                        <a href="#" class="flex -mr-8">
-                            <span class="inline-block sm:text-sm leading-6 text-gray-600 hover:text-gray-900">API</span>
-                            <!-- on changing or removing this badge, remember changing or removing the "-mr-8" on the parent, too -->
-                            <span class="inline-block relative bottom-4 text-xs px-2 py-1 ml-2 bg-pink-200 text-pink-800 rounded-full">coming soon</span>
-                        </a>
-                    </div>
-                </div>
-            </footer>
         </div>
+
+        <!-- Dedication -->
+        <div class="mx-auto">
+            <div class="flex justify-center">
+                <p class="rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 ring-1 ring-inset ring-gray-900/10 hover:ring-gray-900/20">
+                    Dedicated to Runako-sensei
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
+        <footer class="border-t border-gray-900/10 py-12">
+            <div class="sm:grid sm:grid-cols-3">
+                <a href=".">
+                    <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
+                </a>
+                <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
+                    <a href="about.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
+                    <a href="contact.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="legal.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Legal</a>
+                    <a href="api.html" class="flex -mr-8">
+                        <span class="inline-block sm:text-sm leading-6 text-gray-600 hover:text-gray-900">API</span>
+                        <!-- on changing or removing this badge, remember changing or removing the "-mr-8" on the parent, too -->
+                        <span class="inline-block relative bottom-4 text-xs px-2 py-1 ml-2 bg-pink-200 text-pink-800 rounded-full">coming soon</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- Translation functionality -->

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>Romaji to Kana Converter</title>
+    
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/output.css">
+</head>
+
+<body  class="min-h-screen bg-white">
+    
+    <!-- Header -->
+    <header class="absolute inset-x-0 top-0 z-50">
+        <nav class="p-6 lg:px-8">
+            <a href=".">
+                <img class="h-8 w-auto" src="logo.svg" alt="Romaji2Kana Logo">
+            </a>
+        </nav>
+    </header>
+
+    <main class="isolate">
+
+        <!-- Legal information -->
+        <div class="relative pt-14">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <!-- Text Content -->
+            <div class="pt-12 sm:pt-16">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto max-w-2xl text-center">
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">Legal information</h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">You know we Germans love and obey the laws, so here's some <br class="hidden sm:inline">information required by our Telemediengesetz §5 (Telemedia Act)</p>
+                    </div>
+                    <div class="mt-12 sm:mt-16 md:flex md:items-start md:justify-center md:gap-x-6">
+                        <div class="flex-1 border border-gray-300 rounded-md px-3 py-2.5 my-4 md:my-0 shadow-lg">
+                            <h2 class="text-xl font-bold tracking-tight text-gray-900">Information according to §5 TMG</h2>
+                            <p class=" mt-2 text-lg leading-8 text-gray-600">Leander Christmann<br>Schürmann-Horster-Weg 4 WG 3<br>78467 Konstanz</p>
+                        </div>
+                        <div class="flex-1 border border-gray-300 rounded-md px-3 py-2.5 my-4 md:my-0 shadow-lg">
+                            <h2 class="text-xl font-bold tracking-tight text-gray-900">Contact</h2>
+                            <p class="mt-2 text-lg leading-8 text-gray-600">E-Mail: hello@lchristmann.com</p>
+                        </div>
+                        <div class="flex-1 border border-gray-300 rounded-md px-3 py-2.5 my-4 md:my-0 shadow-lg">
+                            <h2 class="text-xl font-bold tracking-tight text-gray-900">Editorially responsible</h2>
+                            <p class="mt-2 text-lg leading-8 text-gray-600">Leander Christmann is responsible for the content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
+        <footer class="border-t border-gray-900/10 py-12">
+            <div class="sm:grid sm:grid-cols-3">
+                <a href=".">
+                    <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
+                </a>
+                <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
+                    <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
+                    <a href="#" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="legal.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Legal</a>
+                    <a href="#" class="flex -mr-8">
+                        <span class="inline-block sm:text-sm leading-6 text-gray-600 hover:text-gray-900">API</span>
+                        <!-- on changing or removing this badge, remember changing or removing the "-mr-8" on the parent, too -->
+                        <span class="inline-block relative bottom-4 text-xs px-2 py-1 ml-2 bg-pink-200 text-pink-800 rounded-full">coming soon</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+    
+</html>
