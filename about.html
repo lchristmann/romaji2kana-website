@@ -67,9 +67,11 @@
     <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
         <footer class="border-t border-gray-900/10 py-12">
             <div class="sm:grid sm:grid-cols-3">
-                <a href=".">
-                    <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
-                </a>
+                <div class="flex"><!-- this wrapping div acts as the grid-column allowing the child <a> to be only as wide as it needs to -->
+                    <a href="." >
+                        <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
+                    </a>
+                </div>
                 <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
                     <a href="about.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
                     <a href="contact.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>

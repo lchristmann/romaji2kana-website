@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* This makes the focus outlines have the primary color of the website - try navigating over the links and inputs with tab! */
+:focus {
+    outline-color: #db2777;
+    outline-offset: 2px;
+}
