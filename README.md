@@ -48,7 +48,6 @@ Compile and minify the CSS for production: `.\tailwindcss.exe -i css/input.css -
 ## 2. Dependencies
 
 - [WanaKana](https://github.com/WaniKani/WanaKana): a JavaScript library for detecting and transliterating Hiragana, Katakana and Romaji in all directions
-  - it is Kunrei-shiki moidified a little bit, [for example ぢゃ -> dya instead of zya, to avoid name clashing](https://github.com/WaniKani/WanaKana/blob/master/src/utils/romajiToKanaMap.js)
 - [Alpine Js](https://alpinejs.dev/): a lightweight JavaScript framework, used here to build (the modal open and close functionality) and the animations, which would've been hard without: [Tailwind uses Alpine for this as well, if you inspect their code](https://tailwindui.com/components/application-ui/overlays/notifications). Knowledge required can be acquired via [this course](https://youtube.com/playlist?list=PLfdtiltiRHWF0T2HE1D4hxN4vaeh4wW3g&si=-NDei8ze6Z5zhAPV) and specifically [this video](https://youtu.be/tFj4y4QjPvc?si=_tqtHnlIBm9QR4Ss).
 
 <br>
