@@ -18,8 +18,8 @@
         }
     </style>
 
-    <script src="https://unpkg.com/wanakana@5.1.0"></script>
-    <script src="https://unpkg.com/alpinejs@3.13.0" defer></script>
+    <script defer src="https://unpkg.com/wanakana@5.1.0"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="min-h-screen bg-white">
@@ -192,20 +192,16 @@
     <div class="mx-auto mt-12 sm:mt-16 max-w-7xl px-6 sm:px-8 sticky top-[100vh]">
         <footer class="border-t border-gray-900/10 py-12">
             <div class="sm:grid sm:grid-cols-3">
-                <div class="flex"><!-- this wrapping div acts as the grid-column allowing the child <a> to be only as wide as it needs to -->
-                    <a href="." >
+                <div class="flex justify-center sm:justify-start"><!-- this wrapping div acts as the grid-column allowing the child <a> to be only as wide as it needs to -->
+                    <a href="." class="sm:ml-8 md:ml-12 lg:ml-16">
                         <img class="h-7 mx-auto sm:mx-0" src="logo.svg" alt="Romaji2Kana Logo">
                     </a>
                 </div>
-                <div class="flex justify-evenly items-center col-span-2 text-center mt-8 sm:mt-0">
-                    <a href="about.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">About</a>
-                    <a href="contact.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Contact</a>
-                    <a href="legal.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900">Legal</a>
-                    <a href="api.html" class="flex -mr-8">
-                        <span class="inline-block sm:text-sm leading-6 text-gray-600 hover:text-gray-900">API</span>
-                        <!-- on changing or removing this badge, remember changing or removing the "-mr-8" on the parent, too -->
-                        <span class="inline-block relative bottom-4 text-xs px-2 py-1 ml-2 bg-pink-200 text-pink-800 rounded-full">coming soon</span>
-                    </a>
+                <div class="flex justify-evenly items-center col-span-2 text-center max-w-[90%] mx-auto mt-8 sm:mx-0 sm:mt-0 sm:max-w-none">
+                    <a href="about.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900 flex-1">About</a>
+                    <a href="legal.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900 flex-1">Legal</a>
+                    <a href="contact.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900 flex-1">Contact</a>
+                    <a href="api.html" class="sm:text-sm leading-6 text-gray-600 hover:text-gray-900 flex-1">API</a>
                 </div>
             </div>
         </footer>

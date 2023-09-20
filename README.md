@@ -9,6 +9,7 @@
 - [2. Dependencies](#2-dependencies)
 - [3. Cloud Infrastructure](#3-cloud-infrastructure)
 - [4. Deployment (CI/CD Pipeline)](#4-deployment-cicd-pipeline)
+- [5. Future plans](#5-future-plans)
 
 <br>
 
@@ -84,5 +85,13 @@ This pipeline will be triggered by every commit in the Git repository.
 1. A GitHub runner will checkout the code in the repository.
 2. It will deploy the files to the "romaji2kana.com" S3 bucket.
 3. It will invalidate the CloudFront distribution's cache, so the changes are are effective immediately.
+
+<br>
+
+## 5. Future plans
+
+Features:
+
+- [Dark Mode](https://tailwindcss.com/docs/dark-mode) that uses system preferences by default but can manually be toggled
 
 <br>
