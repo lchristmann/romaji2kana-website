@@ -33,7 +33,7 @@ jobs:
 
     - name: Deploy to AWS S3 Bucket
       run: |
-        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "index" --include "about" --include "legal" --include "contact" --include "api" --include "404" --delete --cache-control max-age=604800 --content-type "text/html";
+        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "index" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --content-language "html" --delete --cache-control max-age=604800;
         aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
         aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
 
