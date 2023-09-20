@@ -22,8 +22,17 @@ jobs:
     - name: Compile and minify CSS for production
       run: .\tailwindcss.exe -i css/input.css -o css/output.css --minify
 
+    - name: Remove ".html" extension from files for clean URLs
+      run: >
+        ren index.html "index";
+        ren about.html "about";
+        ren legal.html "legal";
+        ren contact.html "contact";
+        ren api.html "api";
+        ren 404.html "404";
+
     - name: Deploy to AWS S3 Bucket
-      run: aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "*.html" --include "css/output.css" --include "logo.svg" --delete --cache-control max-age=604800
+      run: aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "index" --include "about" --include "legal" --include "contact" --include "api" --include "404" --include "css/output.css" --include "logo.svg" --delete --cache-control max-age=604800
 
     - name: Create AWS Cloudfront Invalidation
       run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
