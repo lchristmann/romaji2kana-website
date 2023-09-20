@@ -22,9 +22,8 @@ jobs:
     - name: Compile and minify CSS for production
       run: .\tailwindcss.exe -i css/input.css -o css/output.css --minify
 
-    - name: Remove ".html" extension from files for clean URLs
+    - name: Remove ".html" extension from all html files but the index.html for clean URLs
       run: >
-        ren index.html "index";
         ren about.html "about";
         ren legal.html "legal";
         ren contact.html "contact";
@@ -33,7 +32,8 @@ jobs:
 
     - name: Deploy to AWS S3 Bucket
       run: |
-        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "index" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --content-language "html" --delete --cache-control max-age=604800;
+        aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html --cache-control max-age=604800;
+        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
         aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
         aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
 
