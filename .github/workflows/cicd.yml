@@ -25,6 +25,8 @@ jobs:
     - name: Remove ".html" extension from all footer links, e.g. about.html -> about (for clean URLs)
       run: |
         $currentDirectory = $PSScriptRoot
+        $files = Get-ChildItem -File
+        $files
         $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
         $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_" }
         foreach ($htmlFilePath in $htmlFilePaths) {
