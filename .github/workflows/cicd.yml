@@ -27,8 +27,10 @@ jobs:
         $currentDirectory = $PSScriptRoot
         $files = Get-ChildItem -File
         $files
+        $repositoryRoot = $env:GITHUB_WORKSPACE
+        $repositoryRoot
         $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
-        $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_" }
+        $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $repositoryRoot -ChildPath $_ }
         foreach ($htmlFilePath in $htmlFilePaths) {
           $content = Get-Content -Path $htmlFilePath
           $content = $content -replace 'href="about.html"', 'href="about"'
@@ -37,7 +39,7 @@ jobs:
           $content = $content -replace 'href="api.html"', 'href="api"'
           Set-Content -Path $htmlFilePath -Value $content
         }
-        $output = Get-Content -Path (Join-Path -Path $currentDirectory -ChildPath "contact.html")
+        $output = Get-Content -Path (Join-Path -Path $repositoryRoot -ChildPath "contact.html")
         $output
 
     - name: Remove ".html" extension from all html files but the index.html (for clean URLs)
