@@ -631,6 +631,26 @@ video {
   top: calc(100% - 13rem);
 }
 
+.top-\[calc\(100\%-16rem\)\] {
+  top: calc(100% - 16rem);
+}
+
+.top-\[calc\(100\%-23rem\)\] {
+  top: calc(100% - 23rem);
+}
+
+.top-\[calc\(100\%-40rem\)\] {
+  top: calc(100% - 40rem);
+}
+
+.top-\[calc\(100\%-80rem\)\] {
+  top: calc(100% - 80rem);
+}
+
+.left-\[calc\(30\%\+3rem\)\] {
+  left: calc(30% + 3rem);
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -1835,6 +1855,58 @@ video {
 
   .sm\:top-\[calc\(100\%-30rem\)\] {
     top: calc(100% - 30rem);
+  }
+
+  .sm\:-top-96 {
+    top: -24rem;
+  }
+
+  .sm\:-top-64 {
+    top: -16rem;
+  }
+
+  .sm\:left-\[calc\(50\%\+16rem\)\] {
+    left: calc(50% + 16rem);
+  }
+
+  .sm\:left-\[calc\(50\%\+22rem\)\] {
+    left: calc(50% + 22rem);
+  }
+
+  .sm\:left-\[calc\(50\%\+26rem\)\] {
+    left: calc(50% + 26rem);
+  }
+
+  .sm\:top-\[calc\(100\%-22rem\)\] {
+    top: calc(100% - 22rem);
+  }
+
+  .sm\:top-\[calc\(100\%-40rem\)\] {
+    top: calc(100% - 40rem);
+  }
+
+  .sm\:top-\[calc\(100\%-24rem\)\] {
+    top: calc(100% - 24rem);
+  }
+
+  .sm\:top-\[calc\(100\%-36rem\)\] {
+    top: calc(100% - 36rem);
+  }
+
+  .sm\:top-\[calc\(100\%-32rem\)\] {
+    top: calc(100% - 32rem);
+  }
+
+  .sm\:top-\[calc\(100\%-39rem\)\] {
+    top: calc(100% - 39rem);
+  }
+
+  .sm\:top-\[calc\(100\%-42rem\)\] {
+    top: calc(100% - 42rem);
+  }
+
+  .sm\:top-\[calc\(100\%-48rem\)\] {
+    top: calc(100% - 48rem);
   }
 
   .sm\:mx-0 {
