@@ -25,7 +25,7 @@ jobs:
     - name: Remove ".html" extension from all footer links, e.g. about.html -> about (for clean URLs)
       run: |
         $repositoryRoot = $env:GITHUB_WORKSPACE
-        $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
+        $htmlFileNames = @("index.html", "about.html", "legal.html", "contact.html", "api.html", "404.html")
         $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $repositoryRoot -ChildPath $_ }
         foreach ($htmlFilePath in $htmlFilePaths) {
           $content = Get-Content -Path $htmlFilePath
