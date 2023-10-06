@@ -27,8 +27,7 @@ jobs:
         $currentDirectory = $PSScriptRoot
         $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
         $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_" }
-        $htmlFilePaths
-        foreach ($htmlFilePath in htmlFilePaths) {
+        foreach ($htmlFilePath in $htmlFilePaths) {
           $content = Get-Content -Path $htmlFilePath
           $content = $content -replace 'href="about.html"', 'href="about"'
           $content = $content -replace 'href="legal.html"', 'href="legal"'
