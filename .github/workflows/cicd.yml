@@ -17,25 +17,39 @@ jobs:
     # Have the GitHub Runner use a Windows VM, because the Tailwind CSS standalone executable is a `tailwindcss-windows-x64.exe` (which I use locally, too)
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Compile and minify CSS for production
       run: .\tailwindcss.exe -i css/input.css -o css/output.css --minify
 
     - name: Remove ".html" extension from all html files but the index.html for clean URLs
-      run: >
-        ren about.html "about";
-        ren legal.html "legal";
-        ren contact.html "contact";
-        ren api.html "api";
-        ren 404.html "404";
-
-    - name: Deploy to AWS S3 Bucket
       run: |
-        aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html --cache-control max-age=604800;
-        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
-        aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
-        aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
+        ren about.html "about"
+        ren legal.html "legal"
+        ren contact.html "contact"
+        ren api.html "api"
+        ren 404.html "404"
 
-    - name: Create AWS Cloudfront Invalidation
-      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+    - name: Adapt the footer links to be e.g. "about" instead of "about.html" accordingly
+      run: |
+        $PSVersionTable.PSVersion
+        $scriptDir = $PSScriptRoot
+        $scriptDir
+        $htmlFiles = @(
+          Join-Path $scriptDir "about",
+          Join-Path $scriptDir "legal",
+          Join-Path $scriptDir "contact",
+          Join-Path $scriptDir "api",
+          Join-Path $scriptDir "404"
+        )
+        $htmlFiles
+
+    # - name: Deploy to AWS S3 Bucket
+    #   run: |
+    #     aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html --cache-control max-age=604800;
+    #     aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
+    #     aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
+    #     aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
+
+    # - name: Create AWS Cloudfront Invalidation
+    #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
