@@ -38,12 +38,18 @@
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div class="mx-auto max-w-2xl text-center">
                         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">About all this</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Oh, you're quite curious. Well, what would you like to know? Should I tell you a thing about myself? Or about this project? Let's see, if I can assist you with that.</p>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">Oh, you're quite curious. What would you like to know? Should I tell you a thing about this project? Or about myself? Let's see, what we can do for you here.</p>
                     </div>
                     <div class="mt-12 sm:mt-16 md:flex md:items-start md:justify-center md:gap-x-6">
                         <div class="flex-1 border border-gray-300 rounded-md px-3 py-2.5 my-4 md:my-0 shadow-lg">
                             <h2 class="text-xl font-bold tracking-tight text-gray-900">Me</h2>
-                            <p class="mt-2 text-lg leading-8 text-gray-600">I'm Leander, a 21-year-old avid learner of Japanese on a quest to humbly conquer the lowest language level that's out there: N5.<br>Since I often happen to use Romaji to Kana converters (and being the 7th semester software engineer, that I am) I just had to create such a tool myself - mainly because existing ones have user interfaces, that are not that fun to use. So here we are, hope you like it and nice to meet you! はじめまして。</p>
+                            <p class="mt-2 text-lg leading-8 text-gray-600">I'm Leander, a
+                                <script>
+                                    const birthdate = new Date('2002-09-30');
+                                    const age = new Date().getFullYear() - birthdate.getFullYear() - (new Date().getMonth() < birthdate.getMonth() || (new Date().getMonth() === birthdate.getMonth() && new Date().getDate() < birthdate.getDate()) ? 1 : 0);
+                                    document.write(age);
+                                </script>-year-old avid learner of Japanese, steadily trying to master the basics of this beautiful language, one step at a time.<br>Since I often happen to use Romaji to Kana converters (and being the 7th semester software engineer, that I am) I just had to create such a tool myself - mainly because existing ones have user interfaces, that are not that fun to use. So here we are, hope you like it and nice to meet you! はじめまして。
+                            </p>
                         </div>
                         <div class="flex-1 border border-gray-300 rounded-md px-3 py-2.5 my-4 md:my-0 shadow-lg">
                             <h2 class="text-xl font-bold tracking-tight text-gray-900">Japanese</h2>
