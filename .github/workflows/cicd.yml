@@ -24,11 +24,7 @@ jobs:
 
     - name: Remove ".html" extension from all footer links, e.g. about.html -> about (for clean URLs)
       run: |
-        $currentDirectory = $PSScriptRoot
-        $files = Get-ChildItem -File
-        $files
         $repositoryRoot = $env:GITHUB_WORKSPACE
-        $repositoryRoot
         $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
         $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $repositoryRoot -ChildPath $_ }
         foreach ($htmlFilePath in $htmlFilePaths) {
@@ -39,8 +35,6 @@ jobs:
           $content = $content -replace 'href="api.html"', 'href="api"'
           Set-Content -Path $htmlFilePath -Value $content
         }
-        $output = Get-Content -Path (Join-Path -Path $repositoryRoot -ChildPath "contact.html")
-        $output
 
     - name: Remove ".html" extension from all html files but the index.html (for clean URLs)
       run: |
@@ -50,12 +44,12 @@ jobs:
         ren api.html "api"
         ren 404.html "404"
 
-    # - name: Deploy to AWS S3 Bucket
-    #   run: |
-    #     aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html --cache-control max-age=604800;
-    #     aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
-    #     aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
-    #     aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
+    - name: Deploy to AWS S3 Bucket
+      run: |
+        aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET_NAME }}/index.html --cache-control max-age=604800;
+        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
+        aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
+        aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
 
-    # - name: Create AWS Cloudfront Invalidation
-    #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+    - name: Create AWS Cloudfront Invalidation
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
