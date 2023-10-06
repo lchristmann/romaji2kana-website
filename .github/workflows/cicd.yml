@@ -22,21 +22,21 @@ jobs:
     - name: Compile and minify CSS for production
       run: .\tailwindcss.exe -i css/input.css -o css/output.css --minify
 
-    - name: Remove ".html" extension from all html files but the index.html for clean URLs
+    - name: Remove ".html" exntesion from all footer links, e.g. about.html -> about (for clean URLs)
+      run: |
+        $currentDirectory = $PSScriptRoot
+        $htmlFileNames = @("about.html", "legal.html", "contact.html", "api.html", "404.html")
+        $htmlFilePaths = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_" }
+        $htmlFilePaths
+
+
+    - name: Remove ".html" extension from all html files but the index.html (for clean URLs)
       run: |
         ren about.html "about"
         ren legal.html "legal"
         ren contact.html "contact"
         ren api.html "api"
         ren 404.html "404"
-
-    - name: Adapt the footer links to be e.g. "about" instead of "about.html" accordingly
-      run: |
-        $currentDirectory = $PSScriptRoot
-        $htmlFileNames = @("about", "legal", "contact", "api", "404")
-        $htmlFileNames
-        $htmlFiles = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_.html" }
-        $htmlFiles
 
     # - name: Deploy to AWS S3 Bucket
     #   run: |
