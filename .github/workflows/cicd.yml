@@ -32,16 +32,10 @@ jobs:
 
     - name: Adapt the footer links to be e.g. "about" instead of "about.html" accordingly
       run: |
-        $PSVersionTable.PSVersion
-        $scriptDir = $PSScriptRoot
-        $scriptDir
-        $htmlFiles = @(
-          Join-Path $scriptDir "about",
-          Join-Path $scriptDir "legal",
-          Join-Path $scriptDir "contact",
-          Join-Path $scriptDir "api",
-          Join-Path $scriptDir "404"
-        )
+        $currentDirectory = $PSScriptRoot
+        $htmlFileNames = @("about", "legal", "contact", "api", "404")
+        $htmlFileNames
+        $htmlFiles = $htmlFileNames | ForEach-Object { Join-Path -Path $currentDirectory -ChildPath "$_.html" }
         $htmlFiles
 
     # - name: Deploy to AWS S3 Bucket
