@@ -7,6 +7,10 @@
     <meta name="google" content="notranslate">
 
     <title>Romaji2Kana - API</title>
+
+    <meta name="description" content="The powerful Romaji2Kana REST API lets you integrate various validation and conversion functionalities into your projects. The documentation provides you with many examples of its usage.">
+    <meta name="keywords" content="Romaji, Kana, Hiragana, Katakana, Japanese, Converter, API">
+    <meta name="author" content="Leander Christmann">
     
     <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/output.css">
@@ -26,7 +30,7 @@
 <body class="min-h-screen bg-white">
 
     <!-- Blurry color cloud in the background -->
-    <div class="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+    <div class="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>
@@ -73,7 +77,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/to/kana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="to-kana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -86,7 +91,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="to-kana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="to-kana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -127,13 +132,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-kana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-kana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -158,12 +163,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-kana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-kana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -190,7 +197,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/to/hiragana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="to-hiragana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -203,7 +211,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="to-hiragana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="to-hiragana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -244,13 +252,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-hiragana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-hiragana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -275,12 +283,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-hiragana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-hiragana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -307,7 +317,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/to/katakana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="to-katakana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -320,7 +331,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="to-katakana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="to-katakana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -361,13 +372,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-katakana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-katakana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -392,12 +403,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-katakana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-katakana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -424,7 +437,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/to/romaji</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="to-romaji-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -437,7 +451,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="to-romaji-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="to-romaji-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -478,13 +492,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-romaji-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-romaji-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -509,12 +523,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-romaji-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('to-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('to-romaji-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -554,7 +570,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/japanese</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-japanese-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -567,7 +584,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-japanese-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-japanese-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -608,13 +625,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-japanese-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-japanese-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-japanese-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-japanese-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -639,12 +656,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-japanese-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-japanese-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-japanese-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-japanese-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -671,7 +690,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/kana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-kana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -684,7 +704,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-kana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-kana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -725,13 +745,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-kana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-kana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -756,12 +776,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-kana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-kana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-kana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -788,7 +810,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/hiragana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-hiragana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -801,7 +824,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-hiragana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-hiragana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -842,13 +865,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-hiragana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-hiragana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -873,12 +896,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-hiragana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-hiragana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-hiragana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -905,7 +930,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/katakana</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-katakana-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -918,7 +944,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-katakana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-katakana-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -959,13 +985,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-katakana-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-katakana-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -990,12 +1016,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-katakana-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-katakana-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-katakana-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -1022,7 +1050,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/romaji</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-romaji-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -1035,7 +1064,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-romaji-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-romaji-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -1076,13 +1105,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-romaji-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-romaji-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -1107,12 +1136,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-romaji-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-romaji-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-romaji-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -1139,7 +1170,8 @@
                             <div class="flex items-center gap-x-4">
                                 <span class="font-mono font-semibold leading-6 rounded-md px-2 py-0.5 ring-1 ring-inset ring-pink-300 bg-pink-400/10 text-pink-600 shadow-md">GET</span>
                                 <span class="font-mono text-gray-600">/v1/is/mixed</span>
-                                <svg x-on:click="expanded = !expanded"
+                                <svg x-on:click="expanded = !expanded" aria-label="Expands or collapses the endpoint's documentation" aria-controls="is-mixed-expanded"
+                                    x-bind:aria-expanded="expanded.toString()"
                                     class="h-7 w-7 ml-auto text-pink-600 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path x-show="!expanded" x-transition stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"/>
@@ -1152,7 +1184,7 @@
                             </div>
                             
                             <!-- the expandable part of the modal, that is hidden by default -->
-                            <div id="is-mixed-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4">
+                            <div id="is-mixed-expanded" x-show="expanded" x-cloak x-collapse class="space-y-4" role="region">
 
                                 <!-- put mt-4 here, because above it causes a stuttering of the collapsing close before completion -->
                                 <div class="space-y-2 mt-4">
@@ -1193,13 +1225,13 @@
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
                                                 <!-- Copy button (duplicate icon) -->
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-mixed-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-mixed-request')">
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-mixed-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-mixed-request')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
                                                 <!-- Copied button (checkmark icon) -->
-                                                <button x-show="copied" x-cloak>
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -1224,12 +1256,14 @@
                                         <div x-data="{ copied: false }" class="relative h-8 ml-1 self-end flex justify-end items-center gap-x-0.5">                                        
                                             <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                                 class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-mixed-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-mixed-response')">
+                                                <!-- Copy button (duplicate icon) -->
+                                                <button x-show="!copied" x-on:click="setOverflowVisible('is-mixed-expanded'); copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('is-mixed-response')" aria-label="Copy API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                         <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                                     </svg>
                                                 </button>
-                                                <button x-show="copied" x-cloak>
+                                                <!-- Copied button (checkmark icon) -->
+                                                <button x-show="copied" x-cloak aria-label="Successfully copied API request to clipboard">
                                                     <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                         <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                                     </svg>
@@ -1300,7 +1334,7 @@
     </div>
 
     <!-- Blurry color cloud in the background -->
-    <div class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-48rem)]">
+    <div class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-48rem)]" aria-hidden="true">
         <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>

@@ -7,6 +7,10 @@
     <meta name="google" content="notranslate">
 
     <title>Romaji2Kana</title>
+
+    <meta name="description" content="Convert Romaji to Kana and vice versa quickly and easily with Romaji2Kana. It supports both Hiragana and Katakana and runs online in the browser. The software is 100% free and secure (open source).">
+    <meta name="keywords" content="Romaji, Kana, Hiragana, Katakana, Japanese, Converter">
+    <meta name="author" content="Leander Christmann">
     
     <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/output.css">
@@ -25,7 +29,7 @@
 <body class="min-h-screen bg-white">
 
     <!-- Blurry color cloud in the background -->
-    <div class="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+    <div class="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
         <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>
@@ -42,11 +46,11 @@
             <div class="flex flex-1 justify-end">
                 <button x-data="{ modalOpen: false }" x-show="!modalOpen" x-on:click="modalOpen = true; $dispatch('open-conversion-standards-modal')"
                     x-on:close-conversion-standards-modal.window="modalOpen = false" x-transition
-                    class="cursor-pointer leading-6 text-gray-600 hover:text-gray-900">
-                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mr-1">
+                    class="cursor-pointer leading-6 text-gray-600 hover:text-gray-900" aria-label="Open conversion standards modal">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 float-left mr-1" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
                     </svg>
-                    <span class="md:hidden">Standards</span>
+                    <span class="md:hidden" aria-hidden="true">Standards</span>
                     <span class="hidden md:inline-block">Conversion Standards</span>
                 </button>
             </div>
@@ -71,7 +75,7 @@
                                 <textarea
                                     class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
                                     id="romaji-input" placeholder=" "></textarea>
-                                <label
+                                <label for="romaji-input"
                                     class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                     Romaji
                                 </label>
@@ -82,12 +86,12 @@
                                     <div x-show="copied" x-cloak class="border-solid bg-pink-600 -rotate-45 h-2 w-2 -ml-2"></div>
                                     <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                         class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('romaji-input')">
+                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('romaji-input')" aria-label="Copy content of Romaji textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                 <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                             </svg>
                                         </button>
-                                        <button x-show="copied" x-cloak>
+                                        <button x-show="copied" x-cloak aria-label="Successfully copied content of Romaji textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                 <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                             </svg>
@@ -105,7 +109,7 @@
                                 <textarea
                                     class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
                                     id="hiragana-input" placeholder=" "></textarea>
-                                <label
+                                <label for="hiragana-input"
                                     class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                     Hiragana
                                 </label>
@@ -116,12 +120,12 @@
                                     <div x-show="copied" x-cloak class="border-solid bg-pink-600 -rotate-45 h-2 w-2 -ml-2"></div>
                                     <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                         class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('hiragana-input')">
+                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('hiragana-input')" aria-label="Copy content of Hiragana textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                 <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                             </svg>
                                         </button>
-                                        <button x-show="copied" x-cloak>
+                                        <button x-show="copied" x-cloak aria-label="Successfully copied content of Hiragana textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                 <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                             </svg>
@@ -139,7 +143,7 @@
                                 <textarea
                                     class="peer h-28 md:h-48 xl:h-56 w-full resize-none rounded-md border border-gray-300 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-lg font-normal text-gray-900 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-gray-300 placeholder-shown:border-t-gray-300 focus:border-2 focus:border-pink-600 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50 shadow-lg"
                                     id="katakana-input" placeholder=" "></textarea>
-                                <label
+                                <label for="katakana-input"
                                     class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-gray-300 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-gray-300 after:transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                                     Katakana
                                 </label>
@@ -150,12 +154,12 @@
                                     <div x-show="copied" x-cloak class="border-solid bg-pink-600 -rotate-45 h-2 w-2 -ml-2"></div>
                                     <div x-bind:class="!copied ? 'border-gray-300' : 'border-pink-600'"
                                         class="h-8 w-8 flex justify-center items-center border rounded-md">
-                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('katakana-input')">
+                                        <button x-show="!copied" x-on:click="copied = true; setTimeout(() => copied = false, 2000); copyToClipboard('katakana-input')" aria-label="Copy content of Katakana textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-gray-400">
                                                 <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
                                             </svg>
                                         </button>
-                                        <button x-show="copied" x-cloak>
+                                        <button x-show="copied" x-cloak aria-label="Successfully copied content of Katakana textarea to clipboard">
                                             <svg viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 m-2 text-pink-600">
                                                 <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
                                             </svg>
@@ -220,7 +224,7 @@
     </div>
 
     <!-- Blurry color cloud in the background -->
-    <div class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-48rem)]">
+    <div class="fixed inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-48rem)]" aria-hidden="true">
         <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>
@@ -260,18 +264,18 @@
                 To: "opacity-0"
             -->
             <!-- Conversion standard modal panel -->
-            <div x-show="open" x-cloak
+            <div x-show="open" x-cloak role="dialog" aria-modal="true" aria-labelledby="modalLabel"
                 x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
                 x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                 class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div class="flex items-start p-4">
                     <div class="flex-shrink-0">
-                        <svg class="h-6 w-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-6 w-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
                         </svg>
                     </div>
                     <div class="ml-3 w-0 flex-1 pt-0.5">
-                        <p class="text-sm font-medium text-gray-900">Conversion Standards</p>
+                        <p class="text-sm font-medium text-gray-900" id="modalLabel">Conversion Standards</p>
                         <p class="mt-1 text-sm text-gray-500"> 
                             <br>
                             For <span class="font-medium text-gray-900">Romaji to Kana</span>, this converter perfectly realizes the
@@ -293,7 +297,7 @@
                         </p>
                     </div>
                     <div class="ml-4 flex flex-shrink-0">
-                        <button type="button" x-on:click="open = false; $dispatch('close-conversion-standards-modal')"
+                        <button type="button" x-on:click="open = false; $dispatch('close-conversion-standards-modal')" aria-label="Close conversion standards modal"
                             class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
