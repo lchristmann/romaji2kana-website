@@ -198,21 +198,6 @@
             </div>
         </div>
 
-        <!-- Copy to clipboard functionality -->
-        <script>
-            function copyToClipboard(textareaId) {
-                const text = document.getElementById(textareaId).value;
-                navigator.clipboard.writeText(text);
-            }
-        </script>
-
-        <!-- Clear textarea functionality -->
-        <script>
-            function clearTextarea(textareaId) {
-                document.getElementById(textareaId).value = ""
-            }
-        </script>
-
         <!-- Dedication -->
         <div class="mx-auto">
             <div class="flex justify-center">
@@ -258,8 +243,9 @@
         </div>
     </div>
 
-    <!-- Translation functionality -->
+
     <script>
+        // Translation functionality
         const romajiInput = document.getElementById('romaji-input');
         const hiraganaInput = document.getElementById('hiragana-input');
         const katakanaInput = document.getElementById('katakana-input');
@@ -278,7 +264,18 @@
             romajiInput.value = wanakana.toRomaji(katakanaInput.value);
             hiraganaInput.value = wanakana.toHiragana(katakanaInput.value);
         });
+
+        // Copy and clear textarea functionality
+        function copyToClipboard(textareaId) {
+            const text = document.getElementById(textareaId).value;
+            navigator.clipboard.writeText(text);
+        }
+
+        function clearTextarea(textareaId) {
+            document.getElementById(textareaId).value = ""
+        }
     </script>
+
 
     <!-- Conversion standard modal overlay -->
     <div x-data="{ open: false }" x-on:open-conversion-standards-modal.window="open = true" class="fixed pointer-events-none inset-0 p-6 lg:px-8 z-20">
