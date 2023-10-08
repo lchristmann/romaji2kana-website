@@ -9,7 +9,7 @@
 - [2. Dependencies](#2-dependencies)
 - [3. Cloud Infrastructure](#3-cloud-infrastructure)
 - [4. Deployment (CI/CD Pipeline)](#4-deployment-cicd-pipeline)
-- [5. Future plans](#5-future-plans)
+- [5. SEO](#5-seo)
 
 <br>
 
@@ -21,19 +21,21 @@
 
 ### 1.1. Installation
 
-> As described in the previously linked blog article
+No further actions needed - everything required for this project...
 
-1. Download the latest executable for you platform - in my case the `tailwindcss-windows-x64.exe`
-2. Rename the file to `tailwindcss.exe` for easier usage
-3. Make it executable: right click it > Properties > Security > Permissions for System > Edit > Full Access > Apply
-4. Create the tailwind.config.js file: `.\tailwindcss.exe init`
-   - add the project files that use Tailwind CSS classes to the `content` array in this file
+- has been installed into this repository already (Tailwind)
+- or is included externally (Wanakana translation library, Alpine Js)
 
 <br>
 
 ### 1.2. Development (Continuous) Build
 
-Start a watcher, i.e. a process that watches the files specified in the `content` array from the `tailwind.config.js`: `.\tailwindcss.exe -i css/input.css -o css/output.css --watch`
+Start a watcher, i.e. a process that watches the files specified in the `content` array from the `tailwind.config.js`:
+
+- Windows: `.\tailwindcss.exe -i css/input.css -o css/output.css --watch`
+- Linux: `./tailwindcss -i css/input.css -o css/output.css --watch`
+
+How it works:
 
 - When something changes (and you press "save"!) it automatically recompiles the CSS into the `css/output.css` stylesheet, which is included in the HTML pages.
 - It looks at the Tailwind directives in `css/input.css` to determine which utility classes' existence to even consider and check for.
@@ -42,7 +44,10 @@ Start a watcher, i.e. a process that watches the files specified in the `content
 
 ### 1.3. Production Build
 
-Compile and minify the CSS for production: `.\tailwindcss.exe -i css/input.css -o css/output.css --minify`
+Compile and minify the CSS for production:
+
+- Windows: `.\tailwindcss.exe -i css/input.css -o css/output.css --minify`
+- Linux: `./tailwindcss -i css/input.css -o css/output.css --minify`
 
 <br>
 
@@ -88,10 +93,18 @@ This pipeline will be triggered by every commit in the Git repository.
 
 <br>
 
-## 5. Future plans
+## 5. SEO
 
-Features:
+Search-engine optimization has been done via:
 
-- [Dark Mode](https://tailwindcss.com/docs/dark-mode) that uses system preferences by default but can manually be toggled
+- good content: providing exactly what a visitor would want in a very fast and easily accessible way
+- great UI & UX: will reflect over time in search engines' metrics like traffic and bounce rate
+- `meta` tags
+- keywords (in the respective `meta` tag and in the text  of the websites)
+- semantic HTML (e.g. `header`, `nav`, `main`, `article`, `footer`, `code`)
+- ARIA attributes for accessibility
+- Sitemap (`sitemap.txt`) to help search engines discover all my URLs so they can crawl and index them
+- insane performance
+- some backlinks (currently one in each GitHub + StackOverflow)
 
 <br>
