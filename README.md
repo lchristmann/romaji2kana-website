@@ -107,4 +107,8 @@ Search-engine optimization has been done via:
 - insane performance
 - some backlinks (currently one in each GitHub + StackOverflow)
 
+Lighthouse report:
+
+![Lighthouse report](docs/lighthouse-report.png)
+
 <br>
