@@ -80,7 +80,7 @@
                                     Romaji
                                 </label>
                                 <div class="absolute top-3 right-3">
-                                    <button onclick="clearTextarea('romaji-input')" aria-label="Clear the Romaji textarea" class="text-gray-400 hover:text-gray-500">
+                                    <button onclick="clearInputs()" aria-label="Clear the Romaji textarea" class="text-gray-400 hover:text-gray-500">
                                         <svg class="h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path d="M6 18L18 6M6 6l12 12"/>
                                         </svg>
@@ -121,7 +121,7 @@
                                     Hiragana
                                 </label>
                                 <div class="absolute top-3 right-3">
-                                    <button onclick="clearTextarea('hiragana-input')" aria-label="Clear the Hiragana textarea" class="text-gray-400 hover:text-gray-500">
+                                    <button onclick="clearInputs()" aria-label="Clear the Hiragana textarea" class="text-gray-400 hover:text-gray-500">
                                         <svg class="h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path d="M6 18L18 6M6 6l12 12"/>
                                         </svg>
@@ -162,7 +162,7 @@
                                     Katakana
                                 </label>
                                 <div class="absolute top-3 right-3">
-                                    <button onclick="clearTextarea('katakana-input')" aria-label="Clear the Katakana textarea" class="text-gray-400 hover:text-gray-500">
+                                    <button onclick="clearInputs()" aria-label="Clear the Katakana textarea" class="text-gray-400 hover:text-gray-500">
                                         <svg class="h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path d="M6 18L18 6M6 6l12 12"/>
                                         </svg>
@@ -271,8 +271,10 @@
             navigator.clipboard.writeText(text);
         }
 
-        function clearTextarea(textareaId) {
-            document.getElementById(textareaId).value = ""
+        function clearInputs() {
+            document.getElementById('romaji-input').value = ""
+            document.getElementById('hiragana-input').value = ""
+            document.getElementById('katakana-input').value = ""
         }
     </script>
 
