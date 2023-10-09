@@ -245,36 +245,46 @@
 
 
     <script>
+        const ROMAJI_INPUT = document.getElementById('romaji-input');
+        const HIRAGANA_INPUT = document.getElementById('hiragana-input');
+        const KATAKANA_INPUT = document.getElementById('katakana-input');
+
         // Translation functionality
-        const romajiInput = document.getElementById('romaji-input');
-        const hiraganaInput = document.getElementById('hiragana-input');
-        const katakanaInput = document.getElementById('katakana-input');
-
-        romajiInput.addEventListener('keyup', () => {
-            hiraganaInput.value = wanakana.toHiragana(romajiInput.value);
-            katakanaInput.value = wanakana.toKatakana(romajiInput.value);
+        ROMAJI_INPUT.addEventListener('keyup', () => {
+            HIRAGANA_INPUT.value = wanakana.toHiragana(ROMAJI_INPUT.value);
+            KATAKANA_INPUT.value = wanakana.toKatakana(ROMAJI_INPUT.value);
         });
 
-        hiraganaInput.addEventListener('keyup', () => {
-            romajiInput.value = wanakana.toRomaji(hiraganaInput.value);
-            katakanaInput.value = wanakana.toKatakana(hiraganaInput.value);
+        HIRAGANA_INPUT.addEventListener('keyup', () => {
+            ROMAJI_INPUT.value = wanakana.toRomaji(HIRAGANA_INPUT.value);
+            KATAKANA_INPUT.value = wanakana.toKatakana(HIRAGANA_INPUT.value);
         });
 
-        katakanaInput.addEventListener('keyup', () => {
-            romajiInput.value = wanakana.toRomaji(katakanaInput.value);
-            hiraganaInput.value = wanakana.toHiragana(katakanaInput.value);
+        KATAKANA_INPUT.addEventListener('keyup', () => {
+            ROMAJI_INPUT.value = wanakana.toRomaji(KATAKANA_INPUT.value);
+            HIRAGANA_INPUT.value = wanakana.toHiragana(KATAKANA_INPUT.value);
         });
 
-        // Copy and clear textarea functionality
+        // Copy textarea functionality
         function copyToClipboard(textareaId) {
-            const text = document.getElementById(textareaId).value;
-            navigator.clipboard.writeText(text);
+            switch (textareaId) {
+                case 'romaji-input':
+                    navigator.clipboard.writeText(ROMAJI_INPUT.value);
+                    break;
+                case 'hiragana-input':
+                    navigator.clipboard.writeText(HIRAGANA_INPUT.value);
+                    break;
+                case 'katakana-input':
+                    navigator.clipboard.writeText(KATAKANA_INPUT.value);
+                    break;
+            }
         }
 
+        // Clear textareas functionality
         function clearInputs() {
-            document.getElementById('romaji-input').value = ""
-            document.getElementById('hiragana-input').value = ""
-            document.getElementById('katakana-input').value = ""
+            ROMAJI_INPUT.value = ""
+            HIRAGANA_INPUT.value = ""
+            KATAKANA_INPUT.value = ""
         }
     </script>
 
