@@ -99,7 +99,7 @@ Search-engine optimization has been done via:
 
 - good content: providing exactly what a visitor would want in a very fast and easily accessible way
 - great UI & UX: will reflect over time in search engines' metrics like traffic and bounce rate
-- `meta` tags
+- `meta` tags (basic ones + [Open Graph Tags](https://ogp.me/))
 - keywords (in the respective `meta` tag and in the text  of the websites)
 - semantic HTML (e.g. `header`, `nav`, `main`, `article`, `footer`, `code`)
 - ARIA attributes for accessibility
