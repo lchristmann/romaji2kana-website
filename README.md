@@ -15,16 +15,14 @@
 
 ## 1. Installations & Build
 
-<br>
-
-[Tailwind CSS](https://tailwindcss.com/) is installed via the [standalone executable](https://tailwindcss.com/blog/standalone-cli), which is the recommended way of doing it for projects that aren't using Node.js and npm already and don't want to require it.
-
 ### 1.1. Installation
 
-No further actions needed - everything required for this project...
+No actions needed - everything required for this project...
 
 - has been installed into this repository already (Tailwind)
 - or is included externally (Wanakana translation library, Alpine Js)
+
+> [Tailwind CSS](https://tailwindcss.com/) is installed via the [standalone executable](https://tailwindcss.com/blog/standalone-cli), which is the recommended way of doing it for projects that aren't using Node.js and npm.
 
 <br>
 
