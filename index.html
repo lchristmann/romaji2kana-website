@@ -35,6 +35,7 @@
     </style>
 
     <script defer src="https://unpkg.com/wanakana@5.1.0"></script>
+    <script defer src="js/index.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
@@ -254,47 +255,6 @@
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>
     </div>
-
-
-    <script>
-        const ROMAJI_INPUT = document.getElementById('romaji-input');
-        const HIRAGANA_INPUT = document.getElementById('hiragana-input');
-        const KATAKANA_INPUT = document.getElementById('katakana-input');
-
-        // Translation functionality
-        ROMAJI_INPUT.addEventListener('keyup', () => {
-            HIRAGANA_INPUT.value = wanakana.toHiragana(ROMAJI_INPUT.value);
-            KATAKANA_INPUT.value = wanakana.toKatakana(ROMAJI_INPUT.value);
-        });
-
-        HIRAGANA_INPUT.addEventListener('keyup', () => {
-            ROMAJI_INPUT.value = wanakana.toRomaji(HIRAGANA_INPUT.value);
-            KATAKANA_INPUT.value = wanakana.toKatakana(HIRAGANA_INPUT.value);
-        });
-
-        KATAKANA_INPUT.addEventListener('keyup', () => {
-            ROMAJI_INPUT.value = wanakana.toRomaji(KATAKANA_INPUT.value);
-            HIRAGANA_INPUT.value = wanakana.toHiragana(KATAKANA_INPUT.value);
-        });
-
-        // Copy textarea functionality
-        function copyRomaji() {
-            navigator.clipboard.writeText(ROMAJI_INPUT.value);
-        }
-        function copyHiragana() {
-            navigator.clipboard.writeText(HIRAGANA_INPUT.value);
-        }
-        function copyKatakana() {
-            navigator.clipboard.writeText(KATAKANA_INPUT.value);
-        }
-
-        // Clear textareas functionality
-        function clearInputs() {
-            ROMAJI_INPUT.value = ""
-            HIRAGANA_INPUT.value = ""
-            KATAKANA_INPUT.value = ""
-        }
-    </script>
 
 
     <!-- Conversion standard modal overlay -->

@@ -50,6 +50,7 @@ jobs:
         aws s3 cp sitemap.txt s3://${{ secrets.AWS_S3_BUCKET_NAME }}/sitemap.txt --cache-control max-age=604800;
         aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --exclude "*" --include "about" --include "legal" --include "contact" --include "api" --include "404" --content-type "text/html" --delete --cache-control max-age=604800;
         aws s3 cp css/output.css s3://${{ secrets.AWS_S3_BUCKET_NAME }}/css/output.css --cache-control max-age=604800;
+        aws s3 cp js/index.js s3://${{ secrets.AWS_S3_BUCKET_NAME }}/js/index.js --cache-control max-age=604800;
         aws s3 cp logo.svg s3://${{ secrets.AWS_S3_BUCKET_NAME }}/logo.svg --cache-control max-age=604800;
         aws s3 cp romaji2kana.png s3://${{ secrets.AWS_S3_BUCKET_NAME }}/romaji2kana.png --cache-control max-age=604800;
 
