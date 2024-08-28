@@ -38,6 +38,8 @@ How it works:
 - When something changes (and you press "save"!) it automatically recompiles the CSS into the `css/output.css` stylesheet, which is included in the HTML pages.
 - It looks at the Tailwind directives in `css/input.css` to determine which utility classes' existence to even consider and check for.
 
+Having done this, just hit `Go Live` on the `VSCode Live Server` Extension by Ritwick Dey, and all changes you do will on save automatically show in the browser ([the extension auto-refreshes the browser](https://www.freecodecamp.org/news/vscode-live-server-auto-refresh-browser/)).
+
 <br>
 
 ### 1.3. Production Build
@@ -46,6 +48,8 @@ Compile and minify the CSS for production:
 
 - Windows: `.\tailwindcss.exe -i css/input.css -o css/output.css --minify`
 - Linux: `./tailwindcss -i css/input.css -o css/output.css --minify`
+
+To publish those changes to the `romaji2kana.com` public website, commit and push it. The [CI/CD pipeline](#4-deployment-cicd-pipeline) will take care of everything.
 
 <br>
 
