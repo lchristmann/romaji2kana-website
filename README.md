@@ -49,7 +49,7 @@ Compile and minify the CSS for production:
 - Windows: `.\tailwindcss.exe -i css/input.css -o css/output.css --minify`
 - Linux: `./tailwindcss -i css/input.css -o css/output.css --minify`
 
-To publish those changes to the `romaji2kana.com` public website, commit and push it. The [CI/CD pipeline](#4-deployment-cicd-pipeline) will take care of everything.
+To publish those changes to the `romaji2kana.com` public website **you do not need to to execute this yourself**. The [CI/CD pipeline](#4-deployment-cicd-pipeline) will do the minification and take care of everything. Just stop and restart the Tailwind CSS watcher from [1.2. Development (Continuous) Build](#12-development-continuous-build) to ensure the `output.css` file which you commit is up to date. Sometimes Tailwind classes that have been but aren't used anymore are not taken out out timely.
 
 <br>
 
