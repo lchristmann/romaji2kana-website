@@ -1138,6 +1138,11 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.via-pink-600 {
+  --tw-gradient-to: rgb(219 39 119 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #db2777 var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+
 .to-\[\#9089fc\] {
   --tw-gradient-to: #9089fc var(--tw-gradient-to-position);
 }
@@ -1478,10 +1483,6 @@ video {
   --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
 }
 
-.ring-gray-900\/10 {
-  --tw-ring-color: rgb(17 24 39 / 0.1);
-}
-
 .ring-pink-300 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(249 168 212 / var(--tw-ring-opacity));
@@ -1725,10 +1726,6 @@ video {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.hover\:ring-gray-900\/20:hover {
-  --tw-ring-color: rgb(17 24 39 / 0.2);
 }
 
 .focus\:border-2:focus {
