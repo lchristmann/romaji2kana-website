@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+      font-family: Alex Brush;
+      font-weight: 400;
+      src: url(/fonts/AlexBrush-Regular.ttf) format("truetype");
+    }
+}
+
 /* This makes the focus outlines have the primary color of the website - try navigating over the links and inputs with tab! */
 :focus {
     outline-color: #db2777;

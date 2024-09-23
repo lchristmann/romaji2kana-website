@@ -434,6 +434,14 @@ video {
   display: none;
 }
 
+@font-face {
+  font-family: Alex Brush;
+
+  font-weight: 400;
+
+  src: url(/fonts/AlexBrush-Regular.ttf) format("truetype");
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1138,11 +1146,6 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.via-pink-600 {
-  --tw-gradient-to: rgb(219 39 119 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #db2777 var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
 .to-\[\#9089fc\] {
   --tw-gradient-to: #9089fc var(--tw-gradient-to-position);
 }
@@ -1271,6 +1274,10 @@ video {
   text-align: center;
 }
 
+.font-artistic {
+  font-family: Alex Brush, cursive;
+}
+
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -1282,6 +1289,11 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-4xl {

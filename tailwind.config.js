@@ -4,7 +4,11 @@ module.exports = {
     '*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'artistic': ['Alex Brush', 'cursive']
+      }
+    },
   },
   plugins: [],
 }
